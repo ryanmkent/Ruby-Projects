@@ -1,0 +1,40 @@
+<h1>Welcome to the Event Planner!</h1>
+	<% if flash[:errors] %>
+	<h3><%= flash[:errors] %></h3>
+	<% end %>
+
+	<h3>Register</h3>
+		<%= form_for :user, url: '/users/create' do |x| %>
+		<br>
+		First Name:<%= x.text_field :first_name %>
+		<br>
+		Last Name: <%= x.text_field :last_name %>
+		<br>
+		Email Address: <%= x.text_field :email %>
+		<br>
+		Location: <%= x.text_field :location %>
+		<br>
+		State: <%= x.text_field :state %>
+		<br>
+		Password: <%= x.password_field :password %>
+		<br>
+		Confirm Password: <%= x.password_field :password_confirmation %>
+		<br>
+		<%= x.submit "Submit" %>
+		<% end %>
+
+	<br>
+
+	<h3>Login</h3>
+	
+		<%= form_tag '/authenticate' do %>
+
+		  Email: <%= text_field_tag :email %>
+		  Password: <%= password_field_tag :password %>
+		  <%= submit_tag "Submit" %>
+
+		<% end %>
+			
+	
+
+

@@ -1,0 +1,15 @@
+<h3>Edit Profile</h3>
+		<%= form_for @user, url: "/update/user/#{@user.id}", method:'patch' do |x| %>
+		
+		First Name:<%= x.text_field :first_name %>
+		<br>
+		Last Name: <%= x.text_field :last_name %>
+		<br>
+		Email Address: <%= x.text_field :email %>
+		<br>
+		Location: <%= x.text_field :location %>
+		<br>
+		State: <%= x.text_field :state %>
+		<br>
+		<%= x.submit "Update User" %>
+		<% end %>

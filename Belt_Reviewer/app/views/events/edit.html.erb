@@ -1,0 +1,12 @@
+<h3>Edit Event</h3>
+	<%= form_for @event, url: "/updates/event/#{@event.id}", method:'patch' do |x| %>
+		Event Name:<%= x.text_field :name %>
+		<br>
+		Date: <%= x.date_field :date %>
+		<br>
+		Location: <%= x.text_field :location %>
+		<br>
+		State: <%= x.text_field :state %>
+		<br>
+		<%= x.submit "Update Event" %>
+		<% end %>

@@ -1,0 +1,19 @@
+<h3>Welcome to Ninja Gold!</h3>
+<h3><%= @gold_total %></h3>
+
+Farm (Yields 10-20 Gold)<form action='/farm' method="POST">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+	<input type="submit" value="Find Gold!">
+</form>
+Cave (Yields 5-10 Gold)<form action='/cave' method="POST">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+	<input type="submit" value="Find Gold!">
+</form>
+House (Yields 2-5 Gold)<form action='/house' method="POST">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+	<input type="submit" value="Find Gold!">
+</form>
+Casino (Yields/Subtracts 0-50 Gold)<form action='/casino' method="POST">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+	<input type="submit" value="Find Gold!">
+</form>

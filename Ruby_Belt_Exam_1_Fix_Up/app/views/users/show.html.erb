@@ -1,0 +1,22 @@
+<h1><%= @user.first_name %> <%= @user.last_name %>'s Playlist</h1>
+<table>
+	<thead>
+		<th>Artist</th>
+		<th>Title</th>
+		<th>Times Added</th>
+	</thead>
+	<tbody>
+
+		<% @playlist.songs do |x| %>
+		<tr>
+			<td><%= x.artist %></td>
+			<td><%= x.title %></td>
+			<td><%= x.play_counter %></td>
+		</tr>
+		<% end %>
+
+
+	</tbody>
+</table>	
+		
+

@@ -1,0 +1,46 @@
+<h3><%= @event.name %></h3>
+Host: <%= @event.user_id %>
+<br>
+Date: <%= @event.date %>
+<br>
+Location: <%= @event.location %>, <%= @event.state %>
+<br>
+Number of Attendees: <%= @attendee.count %>
+
+<h5>Attendees</h5>
+
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Location</th>
+		<th>State</th>
+	</thead>
+	<tbody>
+		<% @attendee.each do |a| %>
+			<tr>
+				<td><%= a.user.first_name %> <%= a.user.last_name %></td>
+				<td><%= a.user.location %></td>
+				<td><%= a.user.state %></td>
+			</tr>
+		<% end %>	
+	</tbody>
+</table>
+
+<h5>Leave a Comment!</h5>
+
+<%= form_for Comment.new, url: "/events/#{@event.id}/comment" do |x| %>	
+	<%= x.text_area :content %>
+	<br>
+	<%= x.hidden_field :user_id %>
+	<%= x.hidden_field :event_id %>
+	<%= x.submit "Submit" %>
+<% end %>
+
+<div style="width:300px;height:100px;line-height:1em;overflow:scroll;padding:5px;">
+<% @comment.each do |c| %>
+	<%= c.user.first_name %> says: <%= c.content %>
+	<br>
+<% end %>	
+</div>
+<br>
+<a href='/events'>Return to Events Page</a>

@@ -1,0 +1,32 @@
+<h1>Welcome to the Playlist Site!</h1>
+	<% if flash[:errors] %>
+	<h3><%= flash[:errors] %></h3>
+	<% end %>
+
+	<h3>Register</h3>
+		<%= form_for :user, url: '/users/create' do |x| %>
+		<br>
+		First Name:<%= x.text_field :first_name %>
+		<br>
+		Last Name: <%= x.text_field :last_name %>
+		<br>
+		Email Address: <%= x.text_field :email %>
+		<br>
+		Password: <%= x.password_field :password %>
+		<br>
+		Confirm Password: <%= x.password_field :password_confirmation %>
+		<br>
+		<%= x.submit "Submit" %>
+		<% end %>
+
+	<h3>Login</h3>
+	
+		<%= form_tag '/authenticate' do %>
+
+		  Email: <%= text_field_tag :email %>
+		  <br>
+		  Password: <%= password_field_tag :password %>
+		  <br>
+		  <%= submit_tag "Submit" %>
+
+		<% end %>

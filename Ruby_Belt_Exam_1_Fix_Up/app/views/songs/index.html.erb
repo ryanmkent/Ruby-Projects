@@ -1,0 +1,47 @@
+<h1>Hello, <%= @user.first_name %> <%= @user.last_name %>!</h1>
+
+<h3>All the songs in our hub:</h3>
+<table>
+	<thead>
+		<th>Artist</th>
+		<th>Song</th>
+		<th>Times Added</th>
+		<th>Add to Playlist</th>
+	</thead>
+	<tbody>
+		<% @songs.each do |s| %>
+		<tr>
+			<td><%= s.artist %></td>
+			<td><%= s.title %></td>
+			<td><%= s.play_counter %></td>
+			<td>
+				<%= form_for :song, url: "/songs/#{s.id}/add", method:'post' do |form| %>
+					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+					<%= form.hidden_field :id %>
+					<%= form.submit "Add" %>
+				<% end %>	
+			</td>
+		<% end %>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Submit A New Song</h3>
+
+	<% if flash[:errors] %>
+		<h3><%= flash[:errors] %></h3>
+	<% end %>
+	
+	<%= form_for :song, url: '/songs/create' do |x| %>
+		<br>
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+		Title: <%= x.text_field :title %>
+		<br>
+		Artist: <%= x.text_field :artist %>
+		<br>
+		<%= x.hidden_field :user_id %>
+		<%= x.submit "Submit Song " %>
+	<% end %>	
+
+<a href="/users/<%= @user.id %>">Go To Your Profile</a>
+<a href="/logout">Logout</a>	
